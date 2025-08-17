@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acceso protegido</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input[type="password"] {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 Acceso restringido</h2>
+  <p>Ingresa la clave para ver el dashboard:</p>
+  <input type="password" id="password" placeholder="Escribe la clave aquí">
+  <br>
+  <button onclick="verificarClave()">Ingresar</button>
+
+  <script>
+    function verificarClave() {
+      const claveCorrecta = "arcgis2025"; // ← Puedes cambiarla por cualquier clave
+      const enlace = "https://eniv-rp.maps.arcgis.com/apps/dashboards/5957ba0ddef04532bf2c9b5fdf1965dd";
+
+      const ingreso = document.getElementById("password").value;
+      if (ingreso === claveCorrecta) {
+        window.location.href = enlace;
+      } else {
+        alert("❌ Clave incorrecta. Intenta de nuevo.");
+      }
+    }
+  </script>
+</body>
+</html>
