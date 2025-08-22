@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard protegido</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    #acceso {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    input[type="password"] {
+      padding: 12px;
+      width: 90%;
+      max-width: 300px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="acceso">
+    <h2>🔐 Acceso restringido</h2>
+    <p>Ingresa la clave para ver el dashboard:</p>
+    <input type="password" id="password" placeholder="Escribe la clave aquí">
+    <button onclick="verificarClave()">Ingresar</button>
+  </div>
+
+  <iframe id="dashboardFrame" src=""></iframe>
+
+  <script>
+    function verificarClave() {
+      const claveCorrecta = "Maca.d12"; // ← CAMBIA AQUÍ LA CLAVE
+      const enlaceDashboard = "https://eniv-rp.maps.arcgis.com/apps/dashboards/40236b2e19864ac09f2e8ff76122c869"; // ← CAMBIA AQUÍ EL LINK
+
+      const ingreso = document.getElementById("password").value;
+      const iframe = document.getElementById("dashboardFrame");
+      const accesoDiv = document.getElementById("acceso");
+
+      if (ingreso === claveCorrecta) {
+        accesoDiv.style.display = "none";
+        iframe.src = enlaceDashboard;
+        iframe.style.display = "block";
+      } else {
+        alert("❌ Clave incorrecta. Intenta de nuevo.");
+      }
+    }
+  </script>
+</body>
+</html>
